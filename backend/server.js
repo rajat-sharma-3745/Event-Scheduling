@@ -1,6 +1,8 @@
 import express from 'express'
 import cors from 'cors';
 import 'dotenv/config';
+import userRoutes from './routes/userRoutes.js'
+import eventRoutes from './routes/eventRoutes.js'
 import { errorMiddleware } from './middlewares/error.js';
 import cookieParser from 'cookie-parser';
 
@@ -23,6 +25,8 @@ app.get('/', (req, res) => {
 })
 
 
+app.use('/api/users', userRoutes);
+app.use('/api/events', eventRoutes);
 
 
 
