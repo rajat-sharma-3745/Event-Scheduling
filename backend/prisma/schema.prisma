@@ -8,4 +8,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  events    Event[]  @relation("CreatorEvents")
+  rsvps     RSVP[]
+}
 
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  date        DateTime
+  location    String?
+  creatorId   String
+  creator     User     @relation("CreatorEvents", fields: [creatorId], references: [id])
+  createdAt   DateTime @default(now())
+  rsvps       RSVP[]
+}
+
+// if its in mongoose , we can directly create a members field(array) in event model itself , and just add the user Ids in that array, but here in relational databases to store a user-event connection we have to create another table(link table) ,bcoz user can join many events , and events can have multiple users, so there is M to M relationship b/w user and event so we need a separate table to store those connections.
+
+// RSVP model stores one record per user-event connection
+
+model RSVP {
+  id       String   @id @default(uuid())
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  event    Event    @relation(fields: [eventId], references: [id])
+  eventId  String
+  joinedAt DateTime @default(now())
+  @@unique([userId, eventId])  // creating a composite unique constraint on userId and eventId, so a user can not event twice
+}
