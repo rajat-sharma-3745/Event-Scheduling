@@ -11,9 +11,9 @@ router.get('/:id',auth,getEventDetails)
 // POST /api/events
 router.post('/',auth,createEvent)
 // PATCH /api/events/:id
-router.patch('/:id',auth,updateEvent)
+router.put('/:id',auth,updateEvent)
 // DELETE /api/events/:id
-router.delete('/',auth,deleteEvent)
+router.delete('/:id',auth,deleteEvent)
 // POST /api/events/:id/join
 router.post('/:id/join',auth,joinEvent)
 // POST /api/events/:id/leave
