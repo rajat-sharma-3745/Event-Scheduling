@@ -1,6 +1,6 @@
-import { prisma } from "../prismaClient";
-import { asyncHandler } from "../utils/asyncHandler";
-import { ApiError } from "../utils/errorHandler";
+import { prisma } from "../prismaClient.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiError } from "../utils/errorHandler.js";
 
 export const getAllEvents = asyncHandler(async (req, res, next) => {
     const events = await prisma.event.findMany({

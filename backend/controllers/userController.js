@@ -1,8 +1,8 @@
-import { prisma } from "../prismaClient";
+import { prisma } from "../prismaClient.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/errorHandler.js";
 import { sendToken } from "../utils/feature.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 export const register = asyncHandler(async (req, res, next) => {
     const { name, email, password } = req.body;
