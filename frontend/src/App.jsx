@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Pages/Login";
 import { useAppContext } from "./Context/AppContext";
-import ProtectedRoute from "./auth/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import EventDetails from "./Pages/EventDetails";
 import AllEvents from "./Pages/AllEvents";
@@ -31,7 +31,7 @@ function App() {
           element: <AllEvents />,
         },
         {
-          path: "/details",
+          path: "/event/:id",
           element: <EventDetails />,
         },
         {

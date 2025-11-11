@@ -4,11 +4,8 @@ import { Link } from "react-router-dom";
 import useGetAllEvents from "../hooks/useGetAllEvents";
 import { EventCardShimmer } from "../components/EventCardShimmer";
 
-
-
 const AllEvents = () => {
   const { events, setEvents, loading } = useGetAllEvents();
-
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -31,15 +28,16 @@ const AllEvents = () => {
                 </h2>
                 <p className="text-gray-100 mb-3">{event.description}</p>
 
-                <div className="flex items-center justify-between mb-3">
-                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
+                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-semibold  w-full sm:w-auto">
                     {new Date(event.date).toLocaleDateString()} @{" "}
                     {new Date(event.date).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
                     })}
                   </span>
-                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm">
+
+                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm  w-full sm:w-auto">
                     {event.rsvps.length} Attending
                   </span>
                 </div>

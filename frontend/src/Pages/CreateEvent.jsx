@@ -111,21 +111,19 @@ const CreateEvent = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-10">
-      <h1 className="text-4xl font-bold mb-6 text-gray-800 text-center">
+
+      <div className="flex justify-between items-center mb-6">
+      <h1 className="lg:text-3xl text-xl font-bold text-gray-800 text-center">
         My Events
       </h1>
-
-      {/* Create Event Button */}
-      <div className="flex justify-end mb-6">
         <button
           onClick={openCreateModal}
-          className="bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-700 transition"
+          className="bg-indigo-600 cursor-pointer text-white px-6 py-3 rounded-full font-semibold hover:bg-indigo-700 transition"
         >
           + Create Event
         </button>
       </div>
 
-      {/* User Events List */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {loading ? (
           Array.from({ length: 9 }).map((_, i) => <EventCardShimmer key={i} />)
@@ -151,7 +149,7 @@ const CreateEvent = () => {
 
       {/* Create Event Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/20 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-2xl p-8 w-full max-w-md relative">
             <h2 className="text-2xl font-bold mb-4">
               {isUpdate ? "Update Event" : "Create Event"}
