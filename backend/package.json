@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "prisma generate",
     "start": "node --watch server.js"
   },
   "keywords": [],
