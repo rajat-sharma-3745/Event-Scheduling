@@ -8,30 +8,6 @@ import useGetUserEvents from "../hooks/useGetUserEvents";
 import { API_PATHS } from "../utils/apiPaths";
 import axiosInstance from "../utils/axiosInstance";
 
-// Dummy user events data
-const dummyUserEvents = [
-  {
-    id: 1,
-    title: "Tech Meetup",
-    description: "Networking event for developers",
-    date: "2025-11-12T15:00:00.000Z",
-    location: "NYC",
-  },
-  {
-    id: 2,
-    title: "AI Workshop",
-    description: "Hands-on AI workshop",
-    date: "2025-12-01T10:00:00.000Z",
-    location: "San Francisco",
-  },
-  {
-    id: 3,
-    title: "React Conference",
-    description: "All about React ecosystem",
-    date: "2025-12-20T09:00:00.000Z",
-    location: "Los Angeles",
-  },
-];
 
 const CreateEvent = () => {
   const { events, setEvents, loading } = useGetUserEvents();
