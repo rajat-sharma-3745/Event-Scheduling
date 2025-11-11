@@ -1,4 +1,4 @@
-import { Prisma } from '../generated/prisma/client.ts'
+import { Prisma } from '@prisma/client'
 const errorMiddleware = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
     err.message = err.message || "Internal Server Error";
