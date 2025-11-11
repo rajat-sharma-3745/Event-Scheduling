@@ -11,14 +11,10 @@ const {logout} = useAppContext();
       <Link to={"/"} className="text-white font-semibold">EVENTS</Link>
 
       <ul className="text-white md:flex hidden items-center gap-10">
+       
         <li>
-          <Link className="text-center cursor-pointer" to={'/marketplace'}>
-            MarketPlace
-          </Link>
-        </li>
-        <li>
-          <Link className="text-center cursor-pointer" to={'/requests'}>
-            Requests
+          <Link className="text-center cursor-pointer" to={'/create'}>
+            Create
           </Link>
         </li>
        
@@ -28,7 +24,7 @@ const {logout} = useAppContext();
       <button
       onClick={logout}
         type="button"
-        className="bg-white text-gray-700 md:inline hidden text-sm hover:opacity-90 active:scale-95 transition-all w-40 h-11 rounded-full"
+        className="bg-white cursor-pointer text-gray-700 md:inline hidden text-sm hover:opacity-90 active:scale-95 transition-all w-40 h-11 rounded-full"
       >
        Logout
       </button>
@@ -47,13 +43,11 @@ const {logout} = useAppContext();
         }`}>
         <ul className="flex flex-col space-y-4 text-white text-lg">
          <li className="text-center">
-          <Link  to={'/marketplace'} onClick={()=>setIsMenuOpen(p=>!p)}>
-            MarketPlace
-          </Link>
+          
         </li>
         <li className="text-center">
-          <Link to={'/requests'} onClick={()=>setIsMenuOpen(p=>!p)}>
-            Requests
+          <Link to={'/create'} onClick={()=>setIsMenuOpen(p=>!p)}>
+            Create
           </Link>
         </li>
         </ul>
