@@ -1,11 +1,12 @@
 import { Router } from "express";
-import { createEvent, deleteEvent, getAllEvents, getEventDetails, joinEvent, leaveEvent, updateEvent } from "../controllers/eventController.js";
+import { createEvent, deleteEvent, getAllEvents, getEventDetails, getUserEvents, joinEvent, leaveEvent, updateEvent } from "../controllers/eventController.js";
 import { auth } from "../middlewares/auth.js";
 
 
 const router = Router();
 // GET /api/events
 router.get('/',auth,getAllEvents)
+router.get('/user',auth,getUserEvents)
 // GET /events/:id
 router.get('/:id',auth,getEventDetails)
 // POST /api/events

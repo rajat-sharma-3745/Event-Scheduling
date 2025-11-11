@@ -30,6 +30,6 @@ export const auth = async (req, res, next) => {
 
     } catch (error) {
         console.error('Token verification failed:', error.message);
-        return next(new ApiError(error.message, 401))
+        return next(new ApiError('Token verification failed', 401))
     }
 }

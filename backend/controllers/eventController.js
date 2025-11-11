@@ -10,7 +10,17 @@ export const getAllEvents = asyncHandler(async (req, res, next) => {
         },
         orderBy: { date: 'asc' }
     });
-    res.status(200).json(events)
+    res.status(200).json({success:true,events})
+})
+export const getUserEvents = asyncHandler(async (req, res, next) => {
+    const events = await prisma.event.findMany({
+        where: { creatorId: req.user.id },
+        orderBy: { date: "asc" },
+    });
+    res.status(200).json({
+        success: true,
+        events
+    })
 })
 export const getEventDetails = asyncHandler(async (req, res, next) => {
     const { id } = req.params;
@@ -67,36 +77,36 @@ export const deleteEvent = asyncHandler(async (req, res, next) => {
     }
     await prisma.event.delete({ where: { id } });
 
-    res.status(200).json({ message: 'Event deleted successfully' });
+    res.status(200).json({success:true, message: 'Event deleted successfully' });
 })
 export const joinEvent = asyncHandler(async (req, res, next) => {
-    const { id:eventId } = req.params;
+    const { id: eventId } = req.params;
     const userId = req.user.id
 
-     const existing = await prisma.rSVP.findUnique({
-      where: { userId_eventId: { userId, eventId } },
+    const existing = await prisma.rSVP.findUnique({
+        where: { userId_eventId: { userId, eventId } },
     });
     if (existing)
-      return next(new ApiError('You have already joined this event',400));
+        return next(new ApiError('You have already joined this event', 400));
 
     const rsvp = await prisma.rSVP.create({
-      data: { userId, eventId },
+        data: { userId, eventId },
     });
 
     res.status(201).json({ message: 'Joined event successfully', rsvp });
 })
 export const leaveEvent = asyncHandler(async (req, res, next) => {
-    const { id:eventId } = req.params;
+    const { id: eventId } = req.params;
     const userId = req.user.id
 
-     const existing = await prisma.rSVP.findUnique({
-      where: { userId_eventId: { userId, eventId } },
+    const existing = await prisma.rSVP.findUnique({
+        where: { userId_eventId: { userId, eventId } },
     });
     if (!existing)
-      return next(new ApiError('You are not part of this event',400));
+        return next(new ApiError('You are not part of this event', 400));
 
     await prisma.rSVP.delete({
-      where: { id: existing.id },
+        where: { id: existing.id },
     });
 
     res.status(200).json({ message: 'Left event successfully' });
