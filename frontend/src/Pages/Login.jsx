@@ -3,6 +3,7 @@ import login from "../assets/login.png";
 import axiosInstance from "../utils/axiosInstance";
 import { API_PATHS } from "../utils/apiPaths";
 import { toast } from "sonner";
+import { useAppContext } from "../Context/AppContext";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);

@@ -8,6 +8,7 @@ export const API_PATHS = {
     },
     EVENTS: {
         GETALL: '/events',
+        GETUSEREVENTS: '/events/user',
         GETDETAILS:(id)=> `/events/${id}`,
         CREATE:'/events',
         UPDATE:(id)=>`/events/${id}`,
