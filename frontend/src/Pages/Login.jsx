@@ -171,7 +171,7 @@ const Login = () => {
               onClick={toggleLogin}
               className="cursor-pointer text-indigo-400 hover:underline"
             >
-              {isLogin ? "Login" : "Sign up"}
+              {isLogin ? "Sign up":"Login"}
             </span>
           </p>
         </form>
